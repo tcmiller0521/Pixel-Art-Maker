@@ -1,0 +1,112 @@
+:root {
+  --bs-dark: #1f1f1f;
+  --bs-dark-rgb: 31, 31, 31;
+  --bs-light: #DCDCDD;
+  --bs-light-rgb: 220, 220, 221;
+  --bs-primary: #333333;
+  --bs-primary-rgb: 51, 51, 51;
+  --bs-secondary: #00A896;
+  --bs-secondary-rgb: 0, 168, 150;
+}
+
+body {
+  margin: 0;
+  font-family: oswaldbold;
+  color: var(--bs-light);
+  background-color: var(--bs-dark);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-align: center;
+}
+
+/* Fonts */
+
+@font-face {
+  font-family: oswaldreg;
+  src: url(assets/fonts/Oswald-Regular.ttf);
+}
+
+@font-face {
+  font-family: oswaldbold;
+  src: url(assets/fonts/Oswald-Bold.ttf);
+}
+
+@font-face {
+  font-family: oswaldlight;
+  src: url(assets/fonts/Oswald-Light.ttf);
+}
+
+@font-face {
+  font-family: akwereg;
+  src: url(assets/fonts/ROHH\ \ Akwe\ Pro\ Regular.otf);
+}
+  
+/* General */
+.topnav {
+  z-index: +2;
+}
+
+.btn-dark {
+  background-color: var(--bs-dark) !important;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary) !important;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: var(--bs-secondary) !important;
+  border: none;
+}
+
+.btntext {
+  font-family: oswaldbold;
+}
+
+.grid-container, .button-container, .palette-container {
+ text-align: center;
+ display: block;
+ justify-content: end;
+}
+
+/* Canvas */
+table {
+  object-fit: cover;
+}
+
+td {
+  border: 1px solid black;
+  /* background-color: white; */
+}
+
+tr {
+  height: 15px;
+}
+
+td {
+  width: 15px;
+  box-sizing: border-box;
+}
+
+.pixel-canvas {
+  margin: auto;
+}
+
+.circle {
+  margin: 5px;
+  text-align: center;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.picture-container {
+  width: 50px;
+  height: 50px;
+}
+
+.picture-container img {
+  object-fit: cover;
+}
