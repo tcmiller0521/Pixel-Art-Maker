@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <!-- Navbar -->
     <header>
         <nav class="ms-5 navbar navbar-expand-lg navbar-light bg-primary border-bottom border-dark fixed-top topnav">
             <div class="container-fluid">
@@ -39,7 +40,7 @@
             </div>
         </nav>
     </header>
-
+    <!-- Sidebar -->
     <section>
         <div class="d-flex flex-column flex-shrink-0 bg-primary fixed-top" style="width: 3rem; height: 100vh;">
             <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
@@ -77,9 +78,9 @@
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow text-end pe-3 ms-5">
                             <form class="canvas-size">
                                 Height:
-                                <input type="number" class="input-height mb-2" min="10" max="2000" value="50" />
+                                <input type="number" class="input-height mb-2" min="10" max="2000" value="75" />
                                 Width:
-                                <input type="number" class="input-width mb-2" min="10" max="2000" value="50" />
+                                <input type="number" class="input-width mb-2" min="10" max="2000" value="75" />
                                 <input type="submit" class="save-canvas" min="10" value="Save" />
                             </form>
                         </ul>
@@ -124,22 +125,15 @@
             </div>
         </div>
     </section>
-
+    
+    <!-- Canvas -->
     <div class="d-flex justify-content-center mt-5 pt-5 ms-5">
         <table class="pixel-canvas mt-5 pt-5 canvas-white pic">
             <img class="picture-image picture-size"/>
         </table>
     </div>
 
-    <!-- <div class="picture-container">
-        <img class="picture-image" />
-    </div> -->
-    
-    
-
-
-
-
+    <!-- Javascript -->
     <script src="myScript.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"

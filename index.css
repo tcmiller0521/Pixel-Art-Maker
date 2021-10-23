@@ -22,23 +22,8 @@ body {
 /* Fonts */
 
 @font-face {
-  font-family: oswaldreg;
-  src: url(assets/fonts/Oswald-Regular.ttf);
-}
-
-@font-face {
   font-family: oswaldbold;
   src: url(assets/fonts/Oswald-Bold.ttf);
-}
-
-@font-face {
-  font-family: oswaldlight;
-  src: url(assets/fonts/Oswald-Light.ttf);
-}
-
-@font-face {
-  font-family: akwereg;
-  src: url(assets/fonts/ROHH\ \ Akwe\ Pro\ Regular.otf);
 }
   
 /* General */
@@ -72,26 +57,18 @@ body {
 }
 
 /* Canvas */
-table {
-  object-fit: cover;
-}
 
 td {
   border: 1px solid black;
-  /* background-color: white; */
 }
 
 tr {
-  height: 15px;
+  height: 10px;
 }
 
 td {
-  width: 15px;
+  width: 10px;
   box-sizing: border-box;
-}
-
-.pixel-canvas {
-  margin: auto;
 }
 
 .circle {

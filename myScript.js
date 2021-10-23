@@ -52,13 +52,17 @@ function makeGrid(canvasHeight, canvasWidth) {
         })
       });
 
+      cell.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        cell.style.backgroundColor = 'white';
+      });
+
       makeCanvasWhite(cell);
       fillCanvas(cell); 
       clearCanvas(cell);
     }
   }
 }
-
 
 //Function for canvas size
 function changeCanvasSize() {
@@ -73,8 +77,6 @@ function changeCanvasSize() {
     canvasWidth = e.target.value;
   });
 }
-
-
 
 
 //function for drag and draw
@@ -103,7 +105,7 @@ function dragAndErase() {
         down = false;
         pixelCanvas.addEventListener('mouseover', (e) => {
           if (e.target.className === "" && down) {
-            e.target.style.backgroundColor = "";
+            e.target.style.backgroundColor = "white";
           }
         });
       });
@@ -128,7 +130,8 @@ function fillCanvas(cell) {
 //clear canvas
 function clearCanvas(cell) {
   clearButton.addEventListener('click', () => {
-    cell.style.backgroundColor = "White";
+    cell.style.backgroundColor = "white";
+    pixelCanvas.style.backgroundImage = "";
   });
 }
 
@@ -143,13 +146,14 @@ function changeColor() {
 
 //load random image into canvas
 function getImageFromApi() {
-  const fetchRequest = fetch('https://source.unsplash.com/random/800x600');
+  const fetchRequest = fetch('https://dog.ceo/api/breeds/image/random');
 
   fetchRequest.then((response) => {
-    return response.JSON();
+    return response.json();
   }).then((data) => {
     console.log(data);
     pixelCanvas.style.backgroundImage = `url("${data.message}")`
+    pixelCanvas.style.backgroundSize = "cover"
     clearCells();
   });
 }
@@ -202,8 +206,24 @@ function loadCanvas() {
   });
 }
 
-//undo autosave
-function undoSave () {
+//autosave
+function autoSave () {
+  pixelCanvas.addEventListener('mousemove', () => {
+    const cellArray = [];
+    const allCells = document.querySelectorAll('td');
+    for (let i = 0; i < allCells.length; i++) {
+      const cells = allCells[i];
+      cellArray.push(cells.style.backgroundColor);
+    }
+
+    const canvasInfo = {
+      canvas: cellArray,
+      height: canvasHeight,
+      width: canvasWidth,
+    }
+
+    localStorage.setItem('redo', JSON.stringify(canvasInfo));
+  });
   pixelCanvas.addEventListener('mousedown', () => {
     const cellArray = [];
     const allCells = document.querySelectorAll('td');
@@ -231,26 +251,6 @@ function undoAction() {
     for (let i = 0; i < allCells.length; i++) {
       allCells[i].style.backgroundColor = savedCanvasInfo.canvas[i];
     }
-  });
-}
-
-//redo autosave
-function redoSave () {
-  pixelCanvas.addEventListener('mousemove', () => {
-    const cellArray = [];
-    const allCells = document.querySelectorAll('td');
-    for (let i = 0; i < allCells.length; i++) {
-      const cells = allCells[i];
-      cellArray.push(cells.style.backgroundColor);
-    }
-
-    const canvasInfo = {
-      canvas: cellArray,
-      height: canvasHeight,
-      width: canvasWidth,
-    }
-
-    localStorage.setItem('redo', JSON.stringify(canvasInfo));
   });
 }
 
@@ -304,10 +304,9 @@ function init() {
   saveCanvas();
   loadCanvas();
   loadImageFromApi();
-  undoSave();
+  autoSave();
   undoAction();
   redoAction();
-  redoSave();
   makeCanvasWhite();
 }
 
